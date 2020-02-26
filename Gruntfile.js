@@ -1,14 +1,23 @@
+/*global module :true*/
 module.exports = function (grunt) {
     grunt.initConfig({
-        eslint: {
+        mochacli: {
             options: {
-                configFile: '.eslintrc.json'
+                reporter: 'spec',
+                bail:true
             },
-            target: ['*.js']
+            all: ['test/*.js']
+        },
+        mocha_istanbul:{
+            coverage:{
+                src:'test'
+            }
         }
     });
 
-    grunt.loadNpmTasks('grunt-eslint');
+    grunt.loadNpmTasks('grunt-mocha-cli');
+    grunt.loadNpmTasks('grunt-mocha-istanbul');
 
-    grunt.registerTask('default', ['eslint']);
+    grunt.registerTask('default', ['mochacli']);
+    grunt.registerTask('cover', ['mocha_istanbul']);
 };
