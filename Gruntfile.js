@@ -1,23 +1,17 @@
-/*global module :true*/
 module.exports = function (grunt) {
     grunt.initConfig({
-        mochacli: {
-            options: {
-                reporter: 'spec',
-                bail:true
-            },
-            all: ['test/*.js']
+      mocha: {
+        test: {
+          src: ['test/index.html'],
         },
-        mocha_istanbul:{
-            coverage:{
-                src:'test'
-            }
+        options: {
+          run: true,
+          reporter: 'Dot'
         }
+      }
     });
-
-    grunt.loadNpmTasks('grunt-mocha-cli');
-    grunt.loadNpmTasks('grunt-mocha-istanbul');
-
-    grunt.registerTask('default', ['mochacli']);
-    grunt.registerTask('cover', ['mocha_istanbul']);
-};
+  
+    grunt.loadNpmTasks('grunt-mocha');
+  
+    grunt.registerTask('default', ['mocha']);
+  };
