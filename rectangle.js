@@ -13,13 +13,12 @@ $(function(){
             h = Number($height.val());
 
         //calculate
-            // var p = roundFractional(2 *(w + h), 2),
-            //     a = roundFractional(w * h, 2);
-            var rect = rectangle();
+            var p = roundFractional(2 *(w + h), 2),
+                a = roundFractional(w * h, 2);
 
         //output
-        $perimeter.val(rect.perimeter(w,h));
-        $area.val(rect.area(w,h));
+        $perimeter.val(p);
+        $area.val(a);
     });
 
     function roundFractional(x, n) {
